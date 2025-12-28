@@ -35,7 +35,7 @@ QuickCare BD is a comprehensive digital healthcare platform connecting patients 
 
 ### Frontend
 
-- Next.js 14
+- Next.js
 - TypeScript
 - Tailwind CSS
 - React Query
@@ -58,8 +58,8 @@ QuickCare BD is a comprehensive digital healthcare platform connecting patients 
 
 ### Prerequisites
 
-- Node.js 18+
-- PostgreSQL 14+
+- Node.js
+- PostgreSQL
 - npm or yarn
 
 ### Installation

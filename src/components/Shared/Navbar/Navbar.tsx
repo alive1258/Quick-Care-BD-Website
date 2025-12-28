@@ -23,7 +23,7 @@ const navLinks: NavLink[] = [
   { path: "/blood-donors", display: "Blood Donors" },
   { path: "/medicines", display: "Medicines" },
   { path: "/telemedicine", display: "Telemedicine" },
-  { path: "/about", display: "About" },
+  { path: "/health-tips", display: "Health Tips" },
 ];
 
 const emergencyContacts = [
@@ -372,7 +372,6 @@ const Navbar = () => {
       )}
 
       {/* Spacer for fixed navbar */}
-      <div className="h-28" />
     </>
   );
 };

@@ -1,329 +1,419 @@
-"use client";
-
-import { useState } from "react";
-
-interface StatItem {
-  value: string;
-  label: string;
-  icon: string;
-}
+import {
+  FaSearch,
+  FaAmbulance,
+  FaUserMd,
+  FaPlay,
+  FaPhoneAlt,
+} from "react-icons/fa";
+import {
+  MdBloodtype,
+  MdLocalHospital,
+  MdVerified,
+  MdLocationOn,
+  MdArrowForward,
+} from "react-icons/md";
+import { TbStethoscope, TbMedicineSyrup, TbHeartbeat } from "react-icons/tb";
 
 const Banner = () => {
-  const [hoveredStat, setHoveredStat] = useState<number | null>(null);
-
-  const stats: StatItem[] = [
-    { value: "500+", label: "Universities", icon: "🏛️" },
-    { value: "100%", label: "Scholarship", icon: "🎓" },
-    { value: "50K+", label: "Students", icon: "👨‍🎓" },
-    { value: "200+", label: "Programs", icon: "📚" },
-  ];
-
-  const features = [
-    {
-      title: "No Application Fee",
-      desc: "Zero cost application",
-      icon: "💸",
-    },
-    {
-      title: "Full Tuition",
-      desc: "100% scholarship",
-      icon: "💰",
-    },
-    { title: "Accommodation", desc: "Free housing", icon: "🏠" },
-    { title: "Medical Insurance", desc: "Full coverage", icon: "🏥" },
-    { title: "Career Support", desc: "Job placement", icon: "💼" },
-    {
-      title: "Cultural Programs",
-      desc: "Immersion activities",
-      icon: "🎎",
-    },
-  ];
-
   return (
-    <section
-      className="relative overflow-hidden bg-gradient-to-br from-white via-blue-50 to-cyan-50"
-      aria-label="Hero banner"
-    >
-      {/* Responsive background elements */}
-      <div className="absolute top-0 left-0 w-48 h-48 xs:w-64 xs:h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-gradient-to-br from-blue-200/30 to-transparent rounded-full -translate-x-1/2 -translate-y-1/2 animate-pulse" />
-      <div className="absolute bottom-0 right-0 w-48 h-48 xs:w-64 xs:h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-gradient-to-tl from-cyan-200/30 to-transparent rounded-full translate-x-1/2 translate-y-1/2 animate-pulse delay-1000" />
+    <div className="relative flex items-center bg-gradient-to-br from-blue-50 via-white to-cyan-50 overflow-hidden pt-20 lg:pt-0">
+      {/* Mobile Background Elements (Hidden on Desktop) */}
+      <div className="absolute inset-0 lg:hidden">
+        <div className="absolute top-20 left-0 w-64 h-64 bg-blue-100 rounded-full opacity-10"></div>
+        <div className="absolute bottom-20 right-0 w-56 h-56 bg-cyan-100 rounded-full opacity-10"></div>
+      </div>
 
-      {/* Main Content */}
-      <div className="relative z-10">
-        <div className="container mx-auto px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-center">
-              {/* Left Column */}
-              <div className="order-2 lg:order-1">
-                {/* Main Title - Fully Responsive */}
-                <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight mb-4 sm:mb-5 md:mb-6">
-                  <span className="block bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-                    100% Scholarship
-                  </span>
-                  <span className="block bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient mt-1 sm:mt-2">
-                    Study in China
-                  </span>
-                </h1>
+      {/* Desktop Background Elements */}
+      <div className="hidden lg:block absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-200 rounded-full opacity-20 animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyan-200 rounded-full opacity-20 animate-pulse delay-1000"></div>
+      </div>
 
-                {/* Description - Responsive */}
-                <p className="text-base xs:text-lg sm:text-xl md:text-xl text-gray-600 font-medium mb-6 sm:mb-8 md:mb-10 max-w-xl leading-relaxed">
-                  Transform your future with fully-funded opportunities at
-                  Chinas top-ranked universities. World-class education awaits
-                  you.
-                </p>
+      <div className="relative container  py-8 lg:py-20">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 xl:gap-20 items-center">
+          {/* Left Content - Mobile First */}
+          <div className="relative z-10 order-2 lg:order-1">
+            {/* Trust Badge */}
+            <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-blue-200 px-4 py-2.5 rounded-full mb-6 lg:mb-8 shadow-sm w-full lg:w-auto">
+              <div className="w-6 h-6 lg:w-8 lg:h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <MdVerified className="text-white text-xs lg:text-sm" />
+              </div>
+              <span className="font-semibold text-gray-700 text-xs lg:text-sm truncate">
+                Trusted Healthcare Platform • 64 Districts
+              </span>
+            </div>
 
-                {/* Interactive Stats - Responsive Grid */}
-                <div className="grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-4 gap-3 xs:gap-4 mb-8 sm:mb-10">
-                  {stats.map((stat, index) => (
-                    <div
-                      key={index}
-                      className={`bg-white rounded-lg xs:rounded-xl p-3 xs:p-4 sm:p-5 text-center border-2 transition-all duration-300 hover:scale-105 cursor-pointer
-                        ${
-                          hoveredStat === index
-                            ? "border-blue-500 shadow-lg sm:shadow-xl shadow-blue-500/20"
-                            : "border-gray-100 shadow-md hover:shadow-lg"
-                        }`}
-                      onMouseEnter={() => setHoveredStat(index)}
-                      onMouseLeave={() => setHoveredStat(null)}
-                    >
-                      <div className="text-2xl xs:text-3xl sm:text-4xl mb-1 xs:mb-2">
-                        {stat.icon}
-                      </div>
-                      <div className="text-xl xs:text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent mb-1 xs:mb-2">
-                        {stat.value}
-                      </div>
-                      <div className="text-xs xs:text-sm font-medium text-gray-600">
-                        {stat.label}
-                      </div>
+            {/* Main Headline */}
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight mb-4 lg:mb-6">
+              Healthcare
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 mt-1 lg:mt-2 text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+                Simplified
+              </span>
+            </h1>
+
+            {/* Subtitle */}
+            <p className="text-base md:text-lg lg:text-xl text-gray-600 mb-6 lg:mb-10 leading-relaxed max-w-2xl">
+              Connect instantly with verified doctors, emergency services, blood
+              donors, and hospitals across all
+              <span className="font-semibold text-blue-600">
+                {" "}
+                64 districts
+              </span>{" "}
+              of Bangladesh.
+            </p>
+
+            {/* Search & District Selector */}
+            <div className="space-y-4 lg:space-y-6 mb-8 lg:mb-12">
+              {/* Search Bar */}
+              <div className="relative group">
+                <div className="hidden lg:block absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
+                <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center bg-white rounded-xl lg:rounded-2xl p-1.5 lg:p-2 shadow-lg lg:shadow-xl border border-gray-200">
+                  <div className="flex items-center pl-3 lg:pl-5 pr-2 mb-2 sm:mb-0 sm:border-r border-gray-200">
+                    <FaSearch className="text-gray-400 text-base lg:text-lg" />
+                    <input
+                      type="text"
+                      placeholder="Search doctors, hospitals..."
+                      className="flex-1 py-3 lg:py-4 px-2 lg:px-3 text-gray-700 placeholder-gray-500 focus:outline-none text-sm lg:text-lg bg-transparent"
+                    />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="flex-1 sm:border-r border-gray-200 pr-2">
+                      <select className="w-full py-2 lg:py-3 px-2 lg:px-3 text-gray-600 bg-transparent focus:outline-none text-sm lg:text-base">
+                        <option>All Districts</option>
+                        <option>Dhaka</option>
+                        <option>Chittagong</option>
+                      </select>
                     </div>
-                  ))}
-                </div>
-
-                {/* CTA Buttons - Responsive Stacking */}
-                <div className="flex flex-col xs:flex-row gap-3 xs:gap-4 mb-8 sm:mb-10 md:mb-12">
-                  <button
-                    className="group relative bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-bold py-3 xs:py-3.5 sm:py-4 px-6 xs:px-7 sm:px-8 rounded-lg xs:rounded-xl text-base xs:text-lg sm:text-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2 xs:gap-3 overflow-hidden"
-                    aria-label="Apply Now"
-                  >
-                    <span className="relative z-10">Apply Now</span>
-                    <svg
-                      className="w-4 h-4 xs:w-5 xs:h-5 group-hover:translate-x-1 xs:group-hover:translate-x-2 transition-transform relative z-10"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M13 7l5 5m0 0l-5 5m5-5H6"
-                      />
-                    </svg>
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                  </button>
-
-                  <button
-                    className="group relative bg-white text-gray-800 font-bold py-3 xs:py-3.5 sm:py-4 px-6 xs:px-7 sm:px-8 rounded-lg xs:rounded-xl text-base xs:text-lg sm:text-lg transition-all duration-300 hover:scale-105 border-2 border-gray-200 hover:border-blue-500 flex items-center justify-center gap-2 xs:gap-3 hover:shadow-lg"
-                    aria-label="View Programs"
-                  >
-                    <span>Explore Programs</span>
-                    <svg
-                      className="w-4 h-4 xs:w-5 xs:h-5 group-hover:rotate-90 transition-transform"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                      />
-                    </svg>
-                  </button>
-                </div>
-
-                {/* Quick Info - Responsive */}
-                <div className="flex flex-wrap justify-center xs:justify-start gap-3 xs:gap-4 text-xs xs:text-sm text-gray-600">
-                  <div className="flex items-center gap-1 xs:gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                    <span>Applications Open</span>
-                  </div>
-                  <div className="flex items-center gap-1 xs:gap-2">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
-                    <span>Free Consultation</span>
-                  </div>
-                  <div className="flex items-center gap-1 xs:gap-2">
-                    <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" />
-                    <span>Visa Assistance</span>
+                    <button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-4 lg:px-8 py-3 lg:py-4 rounded-lg lg:rounded-xl font-semibold transition-all duration-300 flex items-center gap-2 text-sm lg:text-base">
+                      <FaSearch className="text-sm lg:text-lg" />
+                      <span className="hidden sm:inline">Find Now</span>
+                    </button>
                   </div>
                 </div>
               </div>
 
-              {/* Right Column */}
-              <div className="relative order-1 lg:order-2">
-                {/* Main Feature Card - Responsive */}
-                <div className="relative bg-gradient-to-br from-white to-blue-50 rounded-xl sm:rounded-2xl p-5 xs:p-6 sm:p-7 md:p-8 shadow-xl sm:shadow-2xl border border-gray-100 overflow-hidden">
-                  {/* Card Top Decoration */}
-                  <div className="absolute top-0 left-0 right-0 h-1 xs:h-1.5 sm:h-2 bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-500" />
+              {/* Quick Actions */}
+              <div className="flex flex-wrap gap-2 lg:gap-4">
+                <a
+                  href="tel:999"
+                  className="inline-flex items-center gap-2 bg-red-50 text-red-600 hover:bg-red-100 px-3 lg:px-4 py-2 lg:py-3 rounded-lg lg:rounded-xl font-medium transition text-sm lg:text-base flex-1 sm:flex-none text-center justify-center"
+                >
+                  <FaAmbulance className="text-sm" />
+                  <span>Emergency</span>
+                </a>
+                <a
+                  href="/blood-donors"
+                  className="inline-flex items-center gap-2 bg-blue-50 text-blue-600 hover:bg-blue-100 px-3 lg:px-4 py-2 lg:py-3 rounded-lg lg:rounded-xl font-medium transition text-sm lg:text-base flex-1 sm:flex-none text-center justify-center"
+                >
+                  <MdBloodtype className="text-sm" />
+                  <span>Blood Donors</span>
+                </a>
+                <a
+                  href="/hospitals"
+                  className="inline-flex items-center gap-2 bg-green-50 text-green-600 hover:bg-green-100 px-3 lg:px-4 py-2 lg:py-3 rounded-lg lg:rounded-xl font-medium transition text-sm lg:text-base flex-1 sm:flex-none text-center justify-center"
+                >
+                  <MdLocalHospital className="text-sm" />
+                  <span>Hospitals</span>
+                </a>
+              </div>
+            </div>
 
-                  {/* Features Grid - Responsive */}
-                  <div className="grid grid-cols-2 xs:grid-cols-2 gap-3 xs:gap-4 mb-6 sm:mb-8">
-                    {features.slice(0, 4).map((feature, idx) => (
+            {/* Live Stats - Mobile Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 lg:gap-6">
+              {[
+                {
+                  icon: (
+                    <FaUserMd className="text-blue-600 text-xl lg:text-2xl" />
+                  ),
+                  value: "5K+",
+                  label: "Doctors",
+                },
+                {
+                  icon: (
+                    <MdBloodtype className="text-red-600 text-xl lg:text-2xl" />
+                  ),
+                  value: "50K+",
+                  label: "Donors",
+                },
+                {
+                  icon: (
+                    <TbHeartbeat className="text-green-600 text-xl lg:text-2xl" />
+                  ),
+                  value: "24/7",
+                  label: "Service",
+                },
+                {
+                  icon: (
+                    <MdLocationOn className="text-purple-600 text-xl lg:text-2xl" />
+                  ),
+                  value: "64",
+                  label: "Districts",
+                },
+              ].map((stat, index) => (
+                <div
+                  key={index}
+                  className="text-center group bg-white/80 backdrop-blur-sm rounded-xl lg:rounded-2xl p-3 lg:p-4 border border-gray-100 hover:border-blue-200 transition-all"
+                >
+                  <div
+                    className={`inline-flex items-center justify-center w-12 h-12 lg:w-16 lg:h-16 rounded-lg lg:rounded-2xl bg-${
+                      stat.label === "Doctors"
+                        ? "blue"
+                        : stat.label === "Donors"
+                        ? "red"
+                        : stat.label === "Service"
+                        ? "green"
+                        : "purple"
+                    }-50 mb-2 lg:mb-3 group-hover:scale-105 transition-transform duration-300`}
+                  >
+                    {stat.icon}
+                  </div>
+                  <div className="text-lg lg:text-2xl font-bold text-gray-900 mb-1">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs lg:text-sm text-gray-600">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Content - Interactive Dashboard */}
+          <div className="relative order-1 lg:order-2 mb-8 lg:mb-0">
+            {/* Floating Emergency Badge - Mobile Top */}
+            <div className="lg:absolute -top-4 -right-4 z-20 mb-4 lg:mb-0">
+              <div className="bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-3 lg:px-5 lg:py-3 rounded-xl shadow-xl">
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 lg:w-8 lg:h-8 bg-white/20 rounded-full flex items-center justify-center">
+                    <FaAmbulance className="text-xs lg:text-sm" />
+                  </div>
+                  <div>
+                    <div className="font-bold text-sm lg:text-base">
+                      24/7 Emergency
+                    </div>
+                    <div className="text-xs opacity-90">Tap for help</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Main Dashboard Card */}
+            <div className="relative bg-white rounded-2xl lg:rounded-3xl shadow-xl lg:shadow-2xl overflow-hidden border border-gray-100">
+              {/* Dashboard Header */}
+              <div className="bg-gradient-to-r from-blue-600 to-cyan-600 p-4 lg:p-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 lg:gap-3">
+                    <div className="w-8 h-8 lg:w-10 lg:h-10 bg-white/20 rounded-lg lg:rounded-xl flex items-center justify-center">
+                      <TbStethoscope className="text-white text-base lg:text-xl" />
+                    </div>
+                    <div>
+                      <h3 className="text-white font-bold text-base lg:text-xl">
+                        QuickCare Dashboard
+                      </h3>
+                      <p className="text-blue-100 text-xs lg:text-sm">
+                        Real-time Healthcare Access
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-white/80 text-xs lg:text-sm">Live</div>
+                    <div className="flex items-center gap-1 lg:gap-2">
+                      <div className="w-1.5 h-1.5 lg:w-2 lg:h-2 bg-green-400 rounded-full animate-pulse"></div>
+                      <div className="text-white font-bold text-sm lg:text-base">
+                        Active
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Dashboard Content */}
+              <div className="p-4 lg:p-6">
+                {/* Emergency Panel */}
+                <div className="mb-4 lg:mb-6">
+                  <div className="flex items-center gap-2 mb-3 lg:mb-4">
+                    <div className="w-6 h-6 lg:w-8 lg:h-8 bg-red-100 rounded-lg flex items-center justify-center">
+                      <FaAmbulance className="text-red-600 text-sm lg:text-base" />
+                    </div>
+                    <h4 className="font-bold text-gray-900 text-sm lg:text-base">
+                      Emergency Services
+                    </h4>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2 lg:gap-3">
+                    <a
+                      href="tel:999"
+                      className="bg-red-50 hover:bg-red-100 p-3 lg:p-4 rounded-lg lg:rounded-xl transition group"
+                    >
+                      <div className="text-red-600 font-bold text-base lg:text-lg">
+                        999
+                      </div>
+                      <div className="text-xs lg:text-sm text-gray-600">
+                        National Emergency
+                      </div>
+                    </a>
+                    <a
+                      href="tel:199"
+                      className="bg-red-50 hover:bg-red-100 p-3 lg:p-4 rounded-lg lg:rounded-xl transition group"
+                    >
+                      <div className="text-red-600 font-bold text-base lg:text-lg">
+                        199
+                      </div>
+                      <div className="text-xs lg:text-sm text-gray-600">
+                        Ambulance
+                      </div>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Services Grid */}
+                <div className="grid grid-cols-2 gap-3 lg:gap-4 mb-4 lg:mb-6">
+                  {[
+                    {
+                      href: "/doctors",
+                      icon: (
+                        <FaUserMd className="text-blue-600 text-base lg:text-xl" />
+                      ),
+                      title: "Find Doctors",
+                      desc: "Instant booking",
+                      color: "blue",
+                    },
+                    {
+                      href: "/hospitals",
+                      icon: (
+                        <MdLocalHospital className="text-green-600 text-base lg:text-xl" />
+                      ),
+                      title: "Hospitals",
+                      desc: "Bed availability",
+                      color: "green",
+                    },
+                    {
+                      href: "/blood-donors",
+                      icon: (
+                        <MdBloodtype className="text-red-600 text-base lg:text-xl" />
+                      ),
+                      title: "Blood Donors",
+                      desc: "Find donors",
+                      color: "red",
+                    },
+                    {
+                      href: "/medicines",
+                      icon: (
+                        <TbMedicineSyrup className="text-purple-600 text-base lg:text-xl" />
+                      ),
+                      title: "Medicines",
+                      desc: "Price & stock",
+                      color: "purple",
+                    },
+                  ].map((service, index) => (
+                    <a key={index} href={service.href} className="group">
                       <div
-                        key={idx}
-                        className="bg-white rounded-lg xs:rounded-xl p-3 xs:p-4 border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1"
+                        className={`bg-${service.color}-50 hover:bg-${service.color}-100 p-3 lg:p-5 rounded-lg lg:rounded-xl transition-all duration-300 hover:shadow-md border border-${service.color}-100`}
                       >
-                        <div className="flex items-center gap-2 xs:gap-3">
-                          <div className="text-xl xs:text-2xl">
-                            {feature.icon}
+                        <div className="flex items-center gap-2 lg:gap-4">
+                          <div
+                            className={`w-8 h-8 lg:w-12 lg:h-12 bg-${service.color}-100 rounded-lg lg:rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform`}
+                          >
+                            {service.icon}
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h3 className="font-bold text-gray-900 text-xs xs:text-sm truncate">
-                              {feature.title}
-                            </h3>
-                            <p className="text-xs text-gray-600 truncate">
-                              {feature.desc}
-                            </p>
+                            <div className="font-bold text-gray-900 text-sm lg:text-base truncate">
+                              {service.title}
+                            </div>
+                            <div className="text-xs lg:text-sm text-gray-500 truncate">
+                              {service.desc}
+                            </div>
                           </div>
                         </div>
                       </div>
-                    ))}
-                  </div>
+                    </a>
+                  ))}
+                </div>
 
-                  {/* Student Testimonials - Responsive */}
-                  <div className="bg-gradient-to-r from-blue-50/80 to-cyan-50/80 rounded-lg xs:rounded-xl p-4 xs:p-5 sm:p-6 mb-6 sm:mb-8 border border-blue-100 backdrop-blur-sm">
-                    <div className="flex flex-col xs:flex-row items-start gap-3 xs:gap-4">
-                      <div className="flex -space-x-3 flex-shrink-0 justify-center xs:justify-start">
-                        {[1, 2, 3, 4].map((i) => (
-                          <div
-                            key={i}
-                            className="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white bg-gradient-to-br from-blue-400 to-cyan-300 flex items-center justify-center text-xs xs:text-sm font-bold text-white shadow-md"
-                          >
-                            {i}
-                          </div>
-                        ))}
-                      </div>
-                      <div className="flex-1 text-center xs:text-left">
-                        <div className="flex justify-center xs:justify-start items-center gap-1 xs:gap-2 mb-1 xs:mb-2">
-                          {[...Array(5)].map((_, i) => (
-                            <span
-                              key={i}
-                              className="text-yellow-400 text-sm xs:text-base"
-                            >
-                              ★
-                            </span>
-                          ))}
-                          <span className="text-xs xs:text-sm font-bold text-gray-900">
-                            4.9/5
+                {/* Live Activity */}
+                <div className="bg-gray-50 rounded-lg lg:rounded-xl p-3 lg:p-5">
+                  <div className="flex items-center justify-between mb-3 lg:mb-4">
+                    <div className="font-semibold text-gray-900 text-sm lg:text-base">
+                      Live Activity
+                    </div>
+                    <div className="text-xs lg:text-sm text-gray-500">
+                      Right Now
+                    </div>
+                  </div>
+                  <div className="space-y-2 lg:space-y-3">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2 lg:gap-3">
+                        <div className="w-6 h-6 lg:w-8 lg:h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                          <span className="text-blue-600 text-xs lg:text-sm">
+                            👨‍⚕️
                           </span>
                         </div>
-                        <p className="text-base xs:text-lg font-bold text-gray-900 mb-1">
-                          <span className="text-blue-600">1,200+ students</span>{" "}
-                          transformed
-                        </p>
-                        <p className="text-xs xs:text-sm text-gray-600">
-                          Join our global community
-                        </p>
+                        <div className="text-xs lg:text-sm">
+                          Dr. consultations
+                        </div>
+                      </div>
+                      <div className="font-bold text-blue-600 text-sm lg:text-base">
+                        142
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2 lg:gap-3">
+                        <div className="w-6 h-6 lg:w-8 lg:h-8 bg-red-100 rounded-lg flex items-center justify-center">
+                          <span className="text-red-600 text-xs lg:text-sm">
+                            🩸
+                          </span>
+                        </div>
+                        <div className="text-xs lg:text-sm">Blood requests</div>
+                      </div>
+                      <div className="font-bold text-red-600 text-sm lg:text-base">
+                        28
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
 
-                  {/* University Partners - Responsive */}
-                  <div className="mb-6 sm:mb-8">
-                    <h3 className="text-base xs:text-lg font-bold text-gray-900 mb-3 xs:mb-4 text-center">
-                      Top Universities
-                    </h3>
-                    <div className="grid grid-cols-2 xs:grid-cols-4 gap-2 xs:gap-3">
-                      {["Tsinghua", "Peking", "Fudan", "Zhejiang"].map(
-                        (uni, idx) => (
-                          <div
-                            key={idx}
-                            className="bg-white rounded-lg p-2 xs:p-3 text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
-                          >
-                            <div className="text-base xs:text-lg font-bold text-blue-600 mb-0.5 xs:mb-1">
-                              {uni[0]}
-                            </div>
-                            <div className="text-xs font-medium text-gray-700 truncate">
-                              {uni}
-                            </div>
-                          </div>
-                        )
-                      )}
+              {/* Dashboard Footer */}
+              <div className="bg-gray-50 p-3 lg:p-5 border-t border-gray-200">
+                <a
+                  href="#"
+                  className="inline-flex items-center justify-center w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white py-2.5 lg:py-3 rounded-lg lg:rounded-xl font-semibold transition-all duration-300 text-sm lg:text-base"
+                >
+                  <FaPlay className="mr-2 text-sm" />
+                  Watch How It Works
+                </a>
+              </div>
+            </div>
+
+            {/* Floating Download App Badge - Mobile Bottom */}
+            <div className="lg:absolute -bottom-4 -left-4 z-20 mt-4 lg:mt-0">
+              <div className="bg-gradient-to-r from-gray-900 to-gray-800 text-white px-4 py-3 lg:px-5 lg:py-3 rounded-xl shadow-xl">
+                <div className="flex items-center gap-2">
+                  <div className="text-xl lg:text-2xl">📱</div>
+                  <div>
+                    <div className="font-bold text-sm lg:text-base">
+                      Get the App
+                    </div>
+                    <div className="text-xs text-gray-300">
+                      Better experience
                     </div>
                   </div>
-                </div>
-
-                {/* Floating Awards - Responsive Sizing & Positioning */}
-                <div className="hidden xs:block absolute -top-3 xs:-top-4 -right-3 xs:-right-4 w-12 h-12 xs:w-16 xs:h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-yellow-400 to-yellow-300 rounded-full flex items-center justify-center text-xl xs:text-2xl sm:text-3xl shadow-lg sm:shadow-xl animate-float">
-                  🏆
-                </div>
-                <div className="hidden xs:block absolute -bottom-3 xs:-bottom-4 -left-3 xs:-left-4 w-10 h-10 xs:w-14 xs:h-14 sm:w-16 sm:h-16 bg-gradient-to-r from-green-400 to-emerald-300 rounded-full flex items-center justify-center text-lg xs:text-xl sm:text-2xl shadow-lg sm:shadow-xl animate-float delay-1000">
-                  ⭐
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Mobile Emergency Call Button (Fixed at bottom on mobile) */}
+        <div className="fixed bottom-6 right-6 lg:hidden z-50">
+          <a
+            href="tel:999"
+            className="w-14 h-14 bg-red-600 text-white rounded-full flex items-center justify-center shadow-2xl animate-pulse"
+          >
+            <FaPhoneAlt className="text-xl" />
+          </a>
+        </div>
       </div>
-
-      {/* Custom Animations with reduced motion support */}
-      <style jsx global>{`
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0px) rotate(0deg);
-          }
-          50% {
-            transform: translateY(-10px) rotate(3deg);
-          }
-        }
-
-        @keyframes gradient {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-
-        .animate-gradient {
-          animation: gradient 3s ease infinite;
-        }
-
-        /* Reduced motion support */
-        @media (prefers-reduced-motion: reduce) {
-          .animate-float,
-          .animate-gradient,
-          .animate-pulse {
-            animation: none;
-          }
-
-          .transition-all,
-          .transition-transform {
-            transition: none;
-          }
-        }
-
-        /* Extra small devices (phones, 375px and up) */
-        @media (min-width: 375px) {
-          .xs\\:block {
-            display: block !important;
-          }
-          .xs\\:hidden {
-            display: none !important;
-          }
-        }
-      `}</style>
-    </section>
+    </div>
   );
 };
 
