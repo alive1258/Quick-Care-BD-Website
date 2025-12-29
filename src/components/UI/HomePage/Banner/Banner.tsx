@@ -10,13 +10,12 @@ import {
   MdLocalHospital,
   MdVerified,
   MdLocationOn,
-  MdArrowForward,
 } from "react-icons/md";
 import { TbStethoscope, TbMedicineSyrup, TbHeartbeat } from "react-icons/tb";
 
 const Banner = () => {
   return (
-    <div className="relative flex items-center bg-gradient-to-br from-blue-50 via-white to-cyan-50 overflow-hidden pt-20 lg:pt-0">
+    <div className="relative flex items-center bg-linear-to-br from-blue-50 via-white to-cyan-50 overflow-hidden ">
       {/* Mobile Background Elements (Hidden on Desktop) */}
       <div className="absolute inset-0 lg:hidden">
         <div className="absolute top-20 left-0 w-64 h-64 bg-blue-100 rounded-full opacity-10"></div>
@@ -30,12 +29,12 @@ const Banner = () => {
       </div>
 
       <div className="relative container  py-8 lg:py-20">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 xl:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Content - Mobile First */}
           <div className="relative z-10 order-2 lg:order-1">
             {/* Trust Badge */}
             <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm border border-blue-200 px-4 py-2.5 rounded-full mb-6 lg:mb-8 shadow-sm w-full lg:w-auto">
-              <div className="w-6 h-6 lg:w-8 lg:h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="w-6 h-6 lg:w-8 lg:h-8 bg-linear-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center shrink-0">
                 <MdVerified className="text-white text-xs lg:text-sm" />
               </div>
               <span className="font-semibold text-gray-700 text-xs lg:text-sm truncate">
@@ -46,7 +45,7 @@ const Banner = () => {
             {/* Main Headline */}
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight mb-4 lg:mb-6">
               Healthcare
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 mt-1 lg:mt-2 text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+              <span className="block text-transparent bg-clip-text bg-linear-to-r from-blue-600 via-cyan-500 to-blue-600 mt-1 lg:mt-2 text-4xl md:text-5xl lg:text-6xl ">
                 Simplified
               </span>
             </h1>
@@ -66,7 +65,7 @@ const Banner = () => {
             <div className="space-y-4 lg:space-y-6 mb-8 lg:mb-12">
               {/* Search Bar */}
               <div className="relative group">
-                <div className="hidden lg:block absolute -inset-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
+                <div className="hidden lg:block absolute -inset-1 bg-linear-to-r from-blue-500 to-cyan-500 rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
                 <div className="relative flex flex-col sm:flex-row items-stretch sm:items-center bg-white rounded-xl lg:rounded-2xl p-1.5 lg:p-2 shadow-lg lg:shadow-xl border border-gray-200">
                   <div className="flex items-center pl-3 lg:pl-5 pr-2 mb-2 sm:mb-0 sm:border-r border-gray-200">
                     <FaSearch className="text-gray-400 text-base lg:text-lg" />
@@ -77,14 +76,14 @@ const Banner = () => {
                     />
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="flex-1 sm:border-r border-gray-200 pr-2">
+                    <div className="flex-1 sm:border-r border-gray-200 pr-2 md:w-48">
                       <select className="w-full py-2 lg:py-3 px-2 lg:px-3 text-gray-600 bg-transparent focus:outline-none text-sm lg:text-base">
                         <option>All Districts</option>
                         <option>Dhaka</option>
                         <option>Chittagong</option>
                       </select>
                     </div>
-                    <button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-4 lg:px-8 py-3 lg:py-4 rounded-lg lg:rounded-xl font-semibold transition-all duration-300 flex items-center gap-2 text-sm lg:text-base">
+                    <button className="primary-btn flex items-center gap-2 text-sm lg:text-base">
                       <FaSearch className="text-sm lg:text-lg" />
                       <span className="hidden sm:inline">Find Now</span>
                     </button>
@@ -152,7 +151,7 @@ const Banner = () => {
               ].map((stat, index) => (
                 <div
                   key={index}
-                  className="text-center group bg-white/80 backdrop-blur-sm rounded-xl lg:rounded-2xl p-3 lg:p-4 border border-gray-100 hover:border-blue-200 transition-all"
+                  className="text-center group bg-white/80 backdrop-blur-sm rounded-xl lg:rounded-2xl p-3 lg:p-4 border border-gray-200 hover:border-blue-200 transition-all"
                 >
                   <div
                     className={`inline-flex items-center justify-center w-12 h-12 lg:w-16 lg:h-16 rounded-lg lg:rounded-2xl bg-${
@@ -182,7 +181,7 @@ const Banner = () => {
           <div className="relative order-1 lg:order-2 mb-8 lg:mb-0">
             {/* Floating Emergency Badge - Mobile Top */}
             <div className="lg:absolute -top-4 -right-4 z-20 mb-4 lg:mb-0">
-              <div className="bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-3 lg:px-5 lg:py-3 rounded-xl shadow-xl">
+              <div className="bg-linear-to-r from-red-500 to-red-600 text-white px-4 py-3 lg:px-5 lg:py-3 rounded-xl shadow-xl">
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 lg:w-8 lg:h-8 bg-white/20 rounded-full flex items-center justify-center">
                     <FaAmbulance className="text-xs lg:text-sm" />
@@ -200,7 +199,7 @@ const Banner = () => {
             {/* Main Dashboard Card */}
             <div className="relative bg-white rounded-2xl lg:rounded-3xl shadow-xl lg:shadow-2xl overflow-hidden border border-gray-100">
               {/* Dashboard Header */}
-              <div className="bg-gradient-to-r from-blue-600 to-cyan-600 p-4 lg:p-6">
+              <div className="bg-linear-to-r from-blue-600 to-cyan-600 p-4 lg:p-6">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2 lg:gap-3">
                     <div className="w-8 h-8 lg:w-10 lg:h-10 bg-white/20 rounded-lg lg:rounded-xl flex items-center justify-center">
@@ -376,7 +375,7 @@ const Banner = () => {
               <div className="bg-gray-50 p-3 lg:p-5 border-t border-gray-200">
                 <a
                   href="#"
-                  className="inline-flex items-center justify-center w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white py-2.5 lg:py-3 rounded-lg lg:rounded-xl font-semibold transition-all duration-300 text-sm lg:text-base"
+                  className="inline-flex items-center justify-center w-full primary-btn "
                 >
                   <FaPlay className="mr-2 text-sm" />
                   Watch How It Works
@@ -386,7 +385,7 @@ const Banner = () => {
 
             {/* Floating Download App Badge - Mobile Bottom */}
             <div className="lg:absolute -bottom-4 -left-4 z-20 mt-4 lg:mt-0">
-              <div className="bg-gradient-to-r from-gray-900 to-gray-800 text-white px-4 py-3 lg:px-5 lg:py-3 rounded-xl shadow-xl">
+              <div className="bg-linear-to-r from-gray-900 to-gray-800 text-white px-4 py-3 lg:px-5 lg:py-3 rounded-xl shadow-xl">
                 <div className="flex items-center gap-2">
                   <div className="text-xl lg:text-2xl">📱</div>
                   <div>
