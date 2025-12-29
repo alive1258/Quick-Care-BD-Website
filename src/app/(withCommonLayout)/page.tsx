@@ -1,4 +1,5 @@
 import Banner from "@/src/components/UI/HomePage/Banner/Banner";
+import DoctorsSection from "@/src/components/UI/HomePage/DoctorsSection/DoctorsSection";
 import ServicesSection from "@/src/components/UI/HomePage/ServicesSection/ServicesSection";
 // import Welcome from "@/src/components/UI/HomePage/Welcome/Welcome";
 // import WhyChina from "@/src/components/UI/HomePage/WhyChina/WhyChina";
@@ -15,6 +16,7 @@ export default function Home() {
     <>
       <Banner />
       <ServicesSection />
+      <DoctorsSection />
       {/* <Welcome /> */}
       {/* <WhyChina />
       <ProgramHighlights />
