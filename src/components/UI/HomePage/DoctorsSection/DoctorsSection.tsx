@@ -1,30 +1,18 @@
 /* eslint-disable react-hooks/purity */
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import {
   FaSearch,
-  FaFilter,
   FaStar,
   FaMapMarkerAlt,
   FaStethoscope,
-  FaPhoneAlt,
-  FaVideo,
-  FaRegClock,
-  FaUserMd,
   FaCalendarAlt,
   FaChevronDown,
   FaCheck,
+  FaShieldAlt,
 } from "react-icons/fa";
-import {
-  MdVerified,
-  MdLocalHospital,
-  MdAccessTime,
-  MdLanguage,
-  MdOutlineMail,
-  MdOutlineCall,
-} from "react-icons/md";
-import { TbHeartbeat, TbMessage } from "react-icons/tb";
-import Image from "next/image";
+import { MdVerified, MdLocalHospital } from "react-icons/md";
+import { TbMessage } from "react-icons/tb";
 import Link from "next/link";
 
 // Types
@@ -164,144 +152,147 @@ const DoctorsSection = () => {
   ];
 
   // Sample doctors data with image paths
-  const allDoctors: Doctor[] = [
-    {
-      id: 1,
-      name: "Dr. Ahmed Rahman",
-      specialty: "Cardiology",
-      hospital: "Square Hospital, Dhaka",
-      division: "Dhaka",
-      rating: 4.9,
-      experience: 15,
-      fee: 1500,
-      languages: ["Bengali", "English", "Hindi"],
-      availability: "Today 4:00 PM",
-      image: "/doctors/dr-ahmed.jpg", // Replace with actual image path
-      isVerified: true,
-      isPremium: true,
-      videoConsultation: true,
-      nextAvailable: "2 hours",
-    },
-    {
-      id: 2,
-      name: "Dr. Fatima Chowdhury",
-      specialty: "Pediatrics",
-      hospital: "Apollo Hospital, Dhaka",
-      division: "Dhaka",
-      rating: 4.8,
-      experience: 12,
-      fee: 1200,
-      languages: ["Bengali", "English"],
-      availability: "Tomorrow 10:00 AM",
-      image: "/doctors/dr-fatima.jpg",
-      isVerified: true,
-      isPremium: true,
-      videoConsultation: true,
-      nextAvailable: "1 day",
-    },
-    {
-      id: 3,
-      name: "Dr. Kamal Hossain",
-      specialty: "Neurology",
-      hospital: "CMH, Dhaka",
-      division: "Dhaka",
-      rating: 4.7,
-      experience: 18,
-      fee: 1800,
-      languages: ["Bengali", "English", "Arabic"],
-      availability: "Today 6:00 PM",
-      image: "/doctors/dr-kamal.jpg",
-      isVerified: true,
-      isPremium: false,
-      videoConsultation: false,
-      nextAvailable: "4 hours",
-    },
-    {
-      id: 4,
-      name: "Dr. Salma Khan",
-      specialty: "Gynecology",
-      hospital: "Bangabandhu Medical, Dhaka",
-      division: "Dhaka",
-      rating: 4.9,
-      experience: 14,
-      fee: 1300,
-      languages: ["Bengali", "English"],
-      availability: "Today 3:00 PM",
-      image: "/doctors/dr-salma.jpg",
-      isVerified: true,
-      isPremium: true,
-      videoConsultation: true,
-      nextAvailable: "1 hour",
-    },
-    {
-      id: 5,
-      name: "Dr. Rajib Das",
-      specialty: "Orthopedics",
-      hospital: "Chattogram Medical",
-      division: "Chattogram",
-      rating: 4.6,
-      experience: 11,
-      fee: 1100,
-      languages: ["Bengali", "English"],
-      availability: "Tomorrow 11:00 AM",
-      image: "/doctors/dr-rajib.jpg",
-      isVerified: true,
-      isPremium: false,
-      videoConsultation: true,
-      nextAvailable: "1 day",
-    },
-    {
-      id: 6,
-      name: "Dr. Nusrat Jahan",
-      specialty: "Dermatology",
-      hospital: "Rajshahi Medical",
-      division: "Rajshahi",
-      rating: 4.8,
-      experience: 9,
-      fee: 1000,
-      languages: ["Bengali"],
-      availability: "Today 5:00 PM",
-      image: "/doctors/dr-nusrat.jpg",
-      isVerified: true,
-      isPremium: true,
-      videoConsultation: false,
-      nextAvailable: "3 hours",
-    },
-    {
-      id: 7,
-      name: "Dr. Abdul Karim",
-      specialty: "Psychiatry",
-      hospital: "Khulna Medical",
-      division: "Khulna",
-      rating: 4.7,
-      experience: 13,
-      fee: 1250,
-      languages: ["Bengali", "English"],
-      availability: "Tomorrow 2:00 PM",
-      image: "/doctors/dr-abdul.jpg",
-      isVerified: true,
-      isPremium: false,
-      videoConsultation: true,
-      nextAvailable: "1 day",
-    },
-    {
-      id: 8,
-      name: "Dr. Tahmina Akter",
-      specialty: "General Medicine",
-      hospital: "Sylhet MAG Osmani",
-      division: "Sylhet",
-      rating: 4.5,
-      experience: 8,
-      fee: 900,
-      languages: ["Bengali", "English"],
-      availability: "Today 7:00 PM",
-      image: "/doctors/dr-tahmina.jpg",
-      isVerified: true,
-      isPremium: false,
-      videoConsultation: true,
-      nextAvailable: "5 hours",
-    },
-  ];
+  const allDoctors = useMemo<Doctor[]>(
+    () => [
+      {
+        id: 1,
+        name: "Dr. Ahmed Rahman",
+        specialty: "Cardiology",
+        hospital: "Square Hospital, Dhaka",
+        division: "Dhaka",
+        rating: 4.9,
+        experience: 15,
+        fee: 1500,
+        languages: ["Bengali", "English", "Hindi"],
+        availability: "Today 4:00 PM",
+        image: "/doctors/dr-ahmed.jpg", // Replace with actual image path
+        isVerified: true,
+        isPremium: true,
+        videoConsultation: true,
+        nextAvailable: "2 hours",
+      },
+      {
+        id: 2,
+        name: "Dr. Fatima Chowdhury",
+        specialty: "Pediatrics",
+        hospital: "Apollo Hospital, Dhaka",
+        division: "Dhaka",
+        rating: 4.8,
+        experience: 12,
+        fee: 1200,
+        languages: ["Bengali", "English"],
+        availability: "Tomorrow 10:00 AM",
+        image: "/doctors/dr-fatima.jpg",
+        isVerified: true,
+        isPremium: true,
+        videoConsultation: true,
+        nextAvailable: "1 day",
+      },
+      {
+        id: 3,
+        name: "Dr. Kamal Hossain",
+        specialty: "Neurology",
+        hospital: "CMH, Dhaka",
+        division: "Dhaka",
+        rating: 4.7,
+        experience: 18,
+        fee: 1800,
+        languages: ["Bengali", "English", "Arabic"],
+        availability: "Today 6:00 PM",
+        image: "/doctors/dr-kamal.jpg",
+        isVerified: true,
+        isPremium: false,
+        videoConsultation: false,
+        nextAvailable: "4 hours",
+      },
+      {
+        id: 4,
+        name: "Dr. Salma Khan",
+        specialty: "Gynecology",
+        hospital: "Bangabandhu Medical, Dhaka",
+        division: "Dhaka",
+        rating: 4.9,
+        experience: 14,
+        fee: 1300,
+        languages: ["Bengali", "English"],
+        availability: "Today 3:00 PM",
+        image: "/doctors/dr-salma.jpg",
+        isVerified: true,
+        isPremium: true,
+        videoConsultation: true,
+        nextAvailable: "1 hour",
+      },
+      {
+        id: 5,
+        name: "Dr. Rajib Das",
+        specialty: "Orthopedics",
+        hospital: "Chattogram Medical",
+        division: "Chattogram",
+        rating: 4.6,
+        experience: 11,
+        fee: 1100,
+        languages: ["Bengali", "English"],
+        availability: "Tomorrow 11:00 AM",
+        image: "/doctors/dr-rajib.jpg",
+        isVerified: true,
+        isPremium: false,
+        videoConsultation: true,
+        nextAvailable: "1 day",
+      },
+      {
+        id: 6,
+        name: "Dr. Nusrat Jahan",
+        specialty: "Dermatology",
+        hospital: "Rajshahi Medical",
+        division: "Rajshahi",
+        rating: 4.8,
+        experience: 9,
+        fee: 1000,
+        languages: ["Bengali"],
+        availability: "Today 5:00 PM",
+        image: "/doctors/dr-nusrat.jpg",
+        isVerified: true,
+        isPremium: true,
+        videoConsultation: false,
+        nextAvailable: "3 hours",
+      },
+      {
+        id: 7,
+        name: "Dr. Abdul Karim",
+        specialty: "Psychiatry",
+        hospital: "Khulna Medical",
+        division: "Khulna",
+        rating: 4.7,
+        experience: 13,
+        fee: 1250,
+        languages: ["Bengali", "English"],
+        availability: "Tomorrow 2:00 PM",
+        image: "/doctors/dr-abdul.jpg",
+        isVerified: true,
+        isPremium: false,
+        videoConsultation: true,
+        nextAvailable: "1 day",
+      },
+      {
+        id: 8,
+        name: "Dr. Tahmina Akter",
+        specialty: "General Medicine",
+        hospital: "Sylhet MAG Osmani",
+        division: "Sylhet",
+        rating: 4.5,
+        experience: 8,
+        fee: 900,
+        languages: ["Bengali", "English"],
+        availability: "Today 7:00 PM",
+        image: "/doctors/dr-tahmina.jpg",
+        isVerified: true,
+        isPremium: false,
+        videoConsultation: true,
+        nextAvailable: "5 hours",
+      },
+    ],
+    []
+  );
 
   // State
   const [selectedDivision, setSelectedDivision] =
@@ -310,7 +301,6 @@ const DoctorsSection = () => {
     useState<string>("All Specialties");
   const [doctors, setDoctors] = useState<Doctor[]>(allDoctors);
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [showFilters, setShowFilters] = useState<boolean>(false);
 
   // Filter doctors
   useEffect(() => {
@@ -338,7 +328,7 @@ const DoctorsSection = () => {
     }
 
     setDoctors(filtered);
-  }, [selectedDivision, selectedSpecialty, searchQuery]);
+  }, [selectedDivision, selectedSpecialty, searchQuery, allDoctors]);
 
   // Reset filters
   const resetFilters = () => {
@@ -369,98 +359,141 @@ const DoctorsSection = () => {
   }
 
   return (
-    <section className="py-16 lg:py-24 bg-gradient-to-b from-white to-gray-50">
+    <section className="py-16 lg:py-24 bg-linear-to-b from-white to-gray-50">
       <div className="container px-4 mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-7 lg:mb-10">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-200 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-            <FaUserMd className="text-blue-600" />
-            <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent font-bold">
-              Expert Medical Professionals
-            </span>
+        <div className="text-center mb-10 ">
+          {/* Animated Badge */}
+          <div className="inline-flex items-center gap-2 bg-linear-to-r from-blue-500/10 to-cyan-500/10 border border-blue-200/50 px-5 py-3 rounded-full text-sm font-semibold mb-6 lg:mb-8 relative overflow-hidden group">
+            {/* Animated background effect */}
+            <div className="absolute inset-0 bg-linear-to-r from-blue-500/0 via-blue-500/10 to-blue-500/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+
+            <div className="relative flex items-center gap-3">
+              <div className="w-7 h-7 bg-linear-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center animate-pulse">
+                <FaShieldAlt className="text-white text-xs" />
+              </div>
+              <span className="bg-linear-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent font-bold">
+                Expert Medical Professionals
+              </span>
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-ping"></div>
+            </div>
           </div>
 
-          <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Find Your
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600 mt-2">
-              Trusted Doctor
-            </span>
-          </h2>
+          {/* Main Heading with Gradient Effect */}
+          <div className="relative mb-8 lg:mb-12">
+            {/* Background Glow Effect */}
+            {/* <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 lg:w-[500px] lg:h-[500px] bg-gradient-to-r from-blue-500/10 via-cyan-500/10 to-blue-500/10 rounded-full blur-3xl opacity-50"></div> */}
 
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Connect with verified doctors from all 8 divisions of Bangladesh.
-            Book appointments instantly or consult via video call.
-          </p>
-        </div>
+            <h1 className="relative text-3xl md:text-4xl lg:text-6xl  font-bold mb-4 lg:mb-6">
+              <span className="text-gray-900 block"> Find Your</span>
+              <span className="relative inline-block">
+                {/* Text Outline Effect */}
+                {/* <span className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-500 rounded-xl blur opacity-30 group-hover:opacity-50 transition duration-1000"></span> */}
 
-        {/* Division Quick Filter - Clean Single Line */}
-        <div className="mb-4  flex jucstify-center items-center w-full max-auto">
-          {/* <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-gray-900">
-              Filter by Division
-            </h3>
-          </div> */}
+                {/* Main Gradient Text */}
+                <span className="relative text-gradient-animated bg-clip-text text-transparent bg-linear-to-r from-blue-500 via-cyan-500 to-blue-500 bg-size-[200%_100%] animate-gradient-x">
+                  Trusted Doctor
+                </span>
 
-          <div className="">
-            {/* Scrollable Division Pills */}
-            <div className="flex space-x-2   px-1 ">
-              {/* All Divisions Button */}
-              <button
-                onClick={() => setSelectedDivision("All Divisions")}
-                className={`flex-shrink-0 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
-                  selectedDivision === "All Divisions"
-                    ? "bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg shadow-blue-200"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                }`}
-              >
-                All Divisions
-              </button>
+                {/* Decorative Elements */}
+                <span className="absolute -right-4 -top-2 text-xl lg:text-2xl">
+                  ✨
+                </span>
+                {/* <span className="absolute -left-4 -bottom-2 text-xl lg:text-2xl">
+                          ⚕️
+                        </span> */}
+              </span>
+            </h1>
 
-              {/* Division Buttons */}
-              {divisionStats.map((stat) => (
-                <button
-                  key={stat.name}
-                  onClick={() => setSelectedDivision(stat.name)}
-                  className={`flex-shrink-0 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 relative group ${
-                    selectedDivision === stat.name
-                      ? `bg-gradient-to-r ${stat.color} text-white shadow-lg`
-                      : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
-                  }`}
-                >
-                  <div className="flex items-center gap-2">
-                    {/* Active Indicator */}
-                    {selectedDivision === stat.name && (
-                      <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></div>
-                    )}
-                    <span>{stat.name}</span>
-                    {/* Doctor Count */}
-                    <span
-                      className={`px-1.5 py-0.5 rounded-full text-xs font-medium ${
-                        selectedDivision === stat.name
-                          ? "bg-white/20"
-                          : "bg-gray-100 text-gray-600"
-                      }`}
-                    >
-                      {stat.count}
-                    </span>
-                  </div>
+            {/* Subtitle with animated underline */}
+            <div className="relative inline-block max-w-3xl mx-auto">
+              <p className="text-lg lg:text-xl text-gray-600 leading-relaxed relative z-10">
+                Connect with verified doctors from all 8 divisions of
+                Bangladesh.
+                <span className="font-semibold text-blue-600 mx-1">
+                  Book appointments instantly or
+                </span>
+                <span className="font-bold bg-linear-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mx-1">
+                  consult via video call
+                </span>
+                of Bangladesh
+              </p>
 
-                  {/* Hover Tooltip */}
-                  <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 px-3 py-1.5 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none z-10">
-                    {stat.count} doctors in {stat.name}
-                    <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
-                  </div>
-                </button>
-              ))}
+              {/* Animated Underline */}
+              <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-linear-to-r from-blue-500 to-cyan-500 rounded-full">
+                <div className="absolute inset-0 bg-linear-to-r from-transparent via-white to-transparent animate-shimmer"></div>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Search and Filters */}
-        <div className="bg-white rounded-2xl p-6 lg:p-8 shadow-xl border border-gray-200 mb-12">
+        <div className="bg-white rounded-2xl p-6 lg:p-8 shadow-md border border-gray-200 mb-12">
+          {/* Division Quick Filter - Clean Single Line */}
+          <div className="mb-4  flex jucstify-center items-center w-full max-auto">
+            {/* <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold text-gray-900">
+              Filter by Division
+            </h3>
+          </div> */}
+
+            <div className="w-6xl mx-auto">
+              {/* Scrollable Division Pills */}
+              <div className="flex space-x-2   px-1 ">
+                {/* All Divisions Button */}
+                <button
+                  onClick={() => setSelectedDivision("All Divisions")}
+                  className={`shrink-0 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                    selectedDivision === "All Divisions"
+                      ? "bg-linear-to-r from-blue-500 to-cyan-500 text-white shadow-lg shadow-blue-200"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  }`}
+                >
+                  All Divisions
+                </button>
+
+                {/* Division Buttons */}
+                {divisionStats.map((stat) => (
+                  <button
+                    key={stat.name}
+                    onClick={() => setSelectedDivision(stat.name)}
+                    className={`shrink-0 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 relative group ${
+                      selectedDivision === stat.name
+                        ? `bg-linear-to-r ${stat.color} text-white shadow-lg`
+                        : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2">
+                      {/* Active Indicator */}
+                      {selectedDivision === stat.name && (
+                        <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></div>
+                      )}
+                      <span>{stat.name}</span>
+                      {/* Doctor Count */}
+                      <span
+                        className={`px-1.5 py-0.5 rounded-full text-xs font-medium ${
+                          selectedDivision === stat.name
+                            ? "bg-white/20"
+                            : "bg-gray-100 text-gray-600"
+                        }`}
+                      >
+                        {stat.count}
+                      </span>
+                    </div>
+
+                    {/* Hover Tooltip */}
+                    <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 px-3 py-1.5 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none z-10">
+                      {stat.count} doctors in {stat.name}
+                      <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-6">
             {/* Search Input */}
-            <div className="lg:col-span-5 relative">
+            <div className="lg:col-span-6 relative">
               <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400">
                 <FaSearch />
               </div>
@@ -474,18 +507,9 @@ const DoctorsSection = () => {
             </div>
 
             {/* Division Dropdown */}
-            <div className="lg:col-span-3">
-              <CustomDropdown
-                options={divisions}
-                selected={selectedDivision}
-                onSelect={setSelectedDivision}
-                icon={<FaMapMarkerAlt className="text-blue-500" />}
-                placeholder="Select Division"
-              />
-            </div>
 
             {/* Specialty Dropdown */}
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-5">
               <CustomDropdown
                 options={specialties}
                 selected={selectedSpecialty}
@@ -499,7 +523,7 @@ const DoctorsSection = () => {
             <div className="lg:col-span-1">
               <button
                 onClick={resetFilters}
-                className="w-full h-full flex items-center justify-center bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white rounded-xl font-semibold transition-all hover:shadow-lg px-4"
+                className="w-full h-full flex items-center justify-center bg-linear-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white rounded-xl font-semibold transition-all hover:shadow-lg px-4"
                 title="Reset all filters"
               >
                 Reset
@@ -576,12 +600,12 @@ const DoctorsSection = () => {
               className="group bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-xl hover:border-blue-200 transition-all duration-300"
             >
               {/* Doctor Image Section */}
-              <div className="relative h-48 bg-gradient-to-br from-blue-50 to-cyan-50">
+              <div className="relative h-48 bg-linear-to-br from-blue-50 to-cyan-50">
                 {/* Doctor Image */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg">
                     {/* Replace with actual Image component if using Next.js */}
-                    <div className="w-full h-full bg-gradient-to-br from-blue-100 to-cyan-100 flex items-center justify-center text-4xl">
+                    <div className="w-full h-full bg-linear-to-br from-blue-100 to-cyan-100 flex items-center justify-center text-4xl">
                       👨‍⚕️
                     </div>
                     {/* <Image
@@ -596,7 +620,7 @@ const DoctorsSection = () => {
 
                 {/* Premium Badge */}
                 {doctor.isPremium && (
-                  <div className="absolute top-4 right-4 bg-gradient-to-r from-yellow-500 to-amber-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                  <div className="absolute top-4 right-4 bg-linear-to-r from-yellow-500 to-amber-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
                     PREMIUM
                   </div>
                 )}
@@ -612,7 +636,7 @@ const DoctorsSection = () => {
                     </h4>
 
                     <div className="flex items-center gap-2 mt-1">
-                      <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                      <span className="text-sm font-semibold bg-linear-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
                         {doctor.specialty}
                       </span>
                       {doctor.isVerified && (
@@ -625,7 +649,7 @@ const DoctorsSection = () => {
                 {/* Hospital & Experience */}
                 <div className="space-y-3 mb-4">
                   <div className="flex items-center gap-2 text-gray-600">
-                    <MdLocalHospital className="text-blue-500 flex-shrink-0" />
+                    <MdLocalHospital className="text-blue-500 shrink-0" />
                     <span className="text-sm truncate">{doctor.hospital}</span>
 
                     {/* Rating */}
@@ -651,7 +675,7 @@ const DoctorsSection = () => {
                     </div>
                   </div>
                   <div className="flex items-center gap-2 text-gray-600">
-                    <FaMapMarkerAlt className="text-red-500 flex-shrink-0" />
+                    <FaMapMarkerAlt className="text-red-500 shrink-0" />
                     <span className="text-sm">{doctor.division}</span>
                     <span className="text-gray-400 mx-2">•</span>
                     <span className="text-sm font-medium">
@@ -676,7 +700,7 @@ const DoctorsSection = () => {
 
                 {/* Action Buttons */}
                 <div className="grid grid-cols-2 gap-3">
-                  <button className="flex-1 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white py-3 rounded-xl font-semibold transition-all hover:shadow-lg flex items-center justify-center gap-2">
+                  <button className="flex-1 bg-linear-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white py-3 rounded-xl font-semibold transition-all hover:shadow-lg flex items-center justify-center gap-2">
                     <FaCalendarAlt />
                     <span className="text-sm">Book</span>
                   </button>

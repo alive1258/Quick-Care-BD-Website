@@ -545,7 +545,7 @@ const ServicesSection = () => {
               </div>
 
               {/* Stats Preview */}
-              <div className="mt-12 pt-8 border-t border-blue-100">
+              {/* <div className="mt-12 pt-8 border-t border-blue-100">
                 <p className="text-gray-500 text-sm mb-4">
                   Join our growing community
                 </p>
@@ -565,7 +565,7 @@ const ServicesSection = () => {
                     <div className="text-xs text-gray-500">Satisfaction</div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
